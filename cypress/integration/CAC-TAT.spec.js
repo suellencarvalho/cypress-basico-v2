@@ -44,7 +44,7 @@ describe('Central de Atendimento ao Cliente TAT', function(){
         cy.get('#firstName').type('Suellen')
         cy.get('#lastName').type('Carvalho')
         cy.get('#email').type('suellentestedencontato@gmail.com')
-        cy.get('#phone-checkbox').click()
+        cy.get('#phone-checkbox').check()
         cy.get('#open-text-area').type('teste')
         cy.contains('button', 'Enviar').click()
         cy.get('.error').should('be.visible')
@@ -124,10 +124,13 @@ describe('Central de Atendimento ao Cliente TAT', function(){
         })
      })
 
-     it.only('marca ambos checkboxes, depois desmarca o último', function(){
+     it('marca ambos checkboxes, depois desmarca o último', function(){
 
       cy.get('input[type="checkbox"]')
         .check()
+        .should('be.checked')
+        .last().uncheck()
+        .should('not.be.checked')
      })
 
 
