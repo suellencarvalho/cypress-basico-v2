@@ -170,11 +170,14 @@ describe('Central de Atendimento ao Cliente TAT', function(){
           cy.get('#privacy a').should('have.attr', 'target', '_blank')
           })
 
-        it.only('acessa a página da política de privacidade removendo o target e então clicanco no link', function(){
+        it('acessa a página da política de privacidade removendo o target e então clicanco no link', function(){
           cy.get('#privacy a')
             .invoke('removeAttr', 'target')
             .click()
+
+          cy.contains('Talking About Testing').should('be.visible')
         })
+
     /**
      * quando quiser rodar apenas um teste coloca o ONLY depois do IT
      * it.only('preenche os campos obrigatórios e envia o formulário', function () {
